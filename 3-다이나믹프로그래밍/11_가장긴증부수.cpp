@@ -15,23 +15,17 @@ int longest(int n) {
     cin >> seq[i];
   }
 
-  // 수열의 원소가 한 개일 경우.
-  escalate[0] = 1;
-  // 수열의 원소가 여러개일 경우.
-  for (int i=1; i<n; i++) {
+  // 주 알고리즘 수정 - 정리 및 단순화.
+  for (int i=0; i<n; i++) {
     // 부분수열의 개수 초기화.
-    escalate[i] = 0;
+    escalate[i] = 1;
     // 이전 부분수열들의 마지막 원소가 현재 부분수열의 마지막 원소보다 작은 경우
     // 해당 부분수열들의 길이를 비교하여 가장 긴 길이를 채택.
     for (int j=0; j<i; j++) {
-      if (seq[j] < seq[i]) {
-        if (escalate[j] > escalate[i]) {
-          escalate[i] = escalate[j];
-        }
+      if (seq[j] < seq[i] && escalate[j]+1 > escalate[i]) {
+        escalate[i] = escalate[j]+1;
       }
     }
-    // i번째 원소 부분수열에 추가.
-    ++escalate[i];
   }
 
   // 가장 긴 부분수열을 결과값으로 선택.
