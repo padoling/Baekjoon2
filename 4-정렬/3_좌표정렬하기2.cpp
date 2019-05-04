@@ -10,13 +10,12 @@ struct Coord{
 };
 
 bool cmp(const Coord &c1, const Coord &c2) {
-  if(c1.y < c2.y) {
+  if(c1.y < c2.y)
     return true;
-  } else if(c1.y == c2.y) {
+  else if(c1.y == c2.y)
     return (c1.x < c2.x);
-  } else {
+  else
     return false;
-  }
 }
 
 void sorting(int n) {
@@ -33,6 +32,7 @@ void sorting(int n) {
   for(iter=coord.begin(); iter!=coord.end(); iter++) {
     cout << iter->x << ' ' << iter->y << '\n';
   }
+
   return;
 }
 
